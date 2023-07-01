@@ -15,7 +15,7 @@ This project enables the integration of the Logitech G29 steering wheel with Sto
    - Download the appropriate installer for your operating system.
    - Run the installer and follow the on-screen instructions to complete the installation.
 
-2. Clone or download this repository to your local machine.
+2. Clone or [download](https://github.com/kennu290/Stormworks-Logitech-G29-Integration/archive/refs/heads/main.zip) this repository to your local machine.
 3. Open a terminal or command prompt in the project directory.
 4. Run the following command to install the necessary dependencies:
 
