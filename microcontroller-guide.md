@@ -29,7 +29,7 @@ Here is the composite mapping for the "Buttons" node with the number correspondi
 
 The wheel spinner outputs a value ranging from 1 to -1. Instead of treating it as a button input, I have decided to directly transfer this value to Stormworks. You can access it through the "Buttons" node on channel 1 as a number input. This is so you could build your own logic on top of this.
 
-The D-Pad is currently not available due to me being lazy af, but will be in the future.
+> **Note:** The D-Pad is currently not available due to me being lazy af, but will be in the future.
 
 # LED Control
 
