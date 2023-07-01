@@ -5,7 +5,7 @@ This project enables the integration of the Logitech G29 steering wheel with Sto
 ## Requirements
 
 - Logitech G29 steering wheel
-- Stormworks game
+- [Stormworks game](https://store.steampowered.com/app/573090/)
 - [Ingame Microcontroller](https://steamcommunity.com/sharedfiles/filedetails/?id=2997567880)
 
 ## Installation
@@ -26,7 +26,10 @@ npm install
 
 ## Usage
 
-To use the program you can either run the provided executable or you can run it from the terminal.
+To use the program you can either run the provided executable or you can run it from the terminal with the command.
+```
+npm run start
+```
 
 ## Contributing
 
