@@ -31,10 +31,6 @@ To use the program you can either run the provided executable or you can run it 
 npm run start
 ```
 
-## Contributing
-
-Contributions to this project are welcome! If you would like to contribute, please follow the guidelines outlined in the CONTRIBUTING.md file.
-
 ## License
 
 This project is licensed under the [MIT License](LICENSE).
