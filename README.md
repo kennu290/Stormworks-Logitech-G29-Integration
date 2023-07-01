@@ -27,9 +27,18 @@ npm install
 ## Usage
 
 To use the program you can either run the provided executable or you can run it from the terminal with the command.
+
 ```
 npm run start
 ```
+
+You should be getting this as output on the terminal.
+
+```
+Connection To Steering Wheel Successful!
+Server is running on http://localhost:3000/data
+```
+Otherwise it probably failed. )=
 
 ## License
 
