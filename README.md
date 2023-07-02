@@ -26,7 +26,7 @@ npm install
 
 ## Usage
 
-To use the program you can either run the provided executable or you can run it from the terminal with the command.
+To use the program you can run the command.
 
 ```
 npm run start
