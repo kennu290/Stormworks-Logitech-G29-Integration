@@ -40,7 +40,7 @@ Server is running on http://localhost:3000/data
 ```
 Otherwise it probably failed. )=
 
-How to use the microcontroller? You can see a guide (here)[microcontroller-guide.md]
+How to use the microcontroller? You can see a guide (here)[https://github.com/kennu290/Stormworks-Logitech-G29-Integration/blob/main/microcontroller-guide.md]
 
 ## License
 
