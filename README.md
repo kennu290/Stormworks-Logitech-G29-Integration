@@ -39,6 +39,7 @@ Connection To Steering Wheel Successful!
 Server is running on http://localhost:3000/data
 ```
 Otherwise it probably failed. )=
+if you are having trouble connecting to a wheel may need to run the [Logitech G Hub software](https://www.logitechg.com/en-us/innovation/g-hub.html) one time to setup drivers.
 
 How to use the microcontroller? You can see a guide [here](https://github.com/kennu290/Stormworks-Logitech-G29-Integration/blob/main/microcontroller-guide.md)
 
