@@ -40,6 +40,8 @@ Server is running on http://localhost:3000/data
 ```
 Otherwise it probably failed. )=
 
+How to use the microcontroller? You can see a guide (here)[microcontroller-guide.md]
+
 ## License
 
 This project is licensed under the [MIT License](LICENSE).
