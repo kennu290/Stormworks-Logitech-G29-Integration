@@ -29,7 +29,7 @@ npm install
 To use the program you can run the command.
 
 ```
-npm run start
+npm start
 ```
 
 You should be getting this as output on the terminal.
