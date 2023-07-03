@@ -33,9 +33,13 @@ npm start
 ```
 
 You should be getting this as output on the terminal.
+![Connection To Steering Wheel Successful!](https://i.imgur.com/kMtdSWq.png)
+
+
+
 
 Otherwise it probably failed. )=
-![Connection To Steering Wheel Successful!](https://i.imgur.com/kMtdSWq.png)
+
 
 if you are having trouble connecting to a wheel may need to run the [Logitech G Hub software](https://www.logitechg.com/en-us/innovation/g-hub.html) one time to setup drivers.
 
