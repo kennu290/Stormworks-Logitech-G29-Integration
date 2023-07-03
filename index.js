@@ -7,12 +7,12 @@ const app = express();
 const port = 3000;
 
 // Version information
-const currentVersion = '0.0.1'; 
+const currentVersion = '0.0.2'; 
 console.clear();
 
 function continuePrompt(){
   // Prompt for user input synchronously
-  const input = readlineSync.question('Do you want to continue? (y/n)').toLowerCase();
+  const input = readlineSync.question('Do you want to continue anyway? (y/n)').toLowerCase();
 
   // Handle the user input
   if (input === 'y') {
@@ -40,16 +40,41 @@ function checkForUpdates() {
           continuePrompt()
 
         } else {
-          console.log('Your application is up to date.');
+          console.log('\x1b[32m%s\x1b[0m', 'Your application is up to date.');
         }
         resolve();
       })
       .catch(error => {
-        console.error('Error checking for updates:', error.message);
-        reject(error);
+        //Resolving so you can use it offline.
+        resolve(error);
       });
   });
 }
+
+async function performStartupAnimation() {
+  const ledSequences = [
+    "10000",
+    "11000",
+    "11100",
+    "11110",
+    "11111"
+  ];
+
+  const delay = 100;
+
+  for (const sequence of ledSequences) {
+    g29.leds(sequence);
+    await sleep(delay);
+  }
+
+  // Turn off all the LEDs
+  g29.leds("00000");
+}
+
+function sleep(ms) {
+  return new Promise((resolve) => setTimeout(resolve, ms));
+}
+
 
 function main(){
   let steering = 0;
@@ -89,9 +114,10 @@ function main(){
 
   // Read data from the Logitech G29
   g29.connect(options, function(err) {  
-      console.log("Connection To Steering Wheel Successful!")
-
-      //Subscribe to all the possible events.
+    console.log('\x1b[32m%s\x1b[0m', '■', 'Connection To Steering Wheel Successful!');
+    performStartupAnimation()
+    
+      //Subscribe to the events.
       g29.on('shifter-gear', val => {
           gear = val
       });
@@ -303,7 +329,7 @@ function main(){
     });
 
     app.listen(port, () => {
-        console.log(`Server is running on http://localhost:${port}/data`);
+        console.log('\x1b[32m%s\x1b[0m', '■', `Server is running on http://localhost:${port}/data`);
     });
   });
 }
@@ -315,8 +341,8 @@ checkForUpdates()
     main()
   })
   .catch(error => {
-    // Handle the error if needed
-    // ...
+    // Handle the error
+    console.log('\x1b[41m%s\x1b[0m', 'An error occurred while checking for updates:', error.message);
   });
 
 
