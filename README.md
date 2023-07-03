@@ -32,13 +32,12 @@ To use the program you can run the command.
 npm start
 ```
 
-You should be getting this as output on the terminal.
-
+<p>You should be getting this as output on the terminal.</p>
+<img src="https://i.imgur.com/kMtdSWq.png" alt="Connection To Steering Wheel Successful!">
 
 
 
 Otherwise it probably failed. )=
-![Connection To Steering Wheel Successful!](https://i.imgur.com/kMtdSWq.png)
 
 
 
