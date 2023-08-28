@@ -1,7 +1,6 @@
 # Logitech G29 Integration with Stormworks
 
-This project enables the integration of the Logitech G29 steering wheel with Stormworks, providing enhanced features such as force feedback, button mapping, LED control, and more.
-
+This project enables the integration of the Logitech G29 steering wheel with Stormworks, providing enhanced features such as force feedback, button mapping, LED control.
 ## Requirements
 
 - Logitech G29 steering wheel
