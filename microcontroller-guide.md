@@ -26,16 +26,18 @@ Here is the composite mapping for the "Buttons" node with the number correspondi
 14. Share
 15. Options
 16. Playstation
+17. Arrow Up
+18. Arrow Down
+19. Arrow Right
+20. Arrow Left
 
 The wheel spinner outputs a value ranging from 1 to -1. Instead of treating it as a button input, I have decided to directly transfer this value to Stormworks. You can access it through the "Buttons" node on channel 1 as a number input. This is so you could build your own logic on top of this.
-
-> **Note:** The D-Pad is currently not available due to me being lazy af, but will be in the future.
 
 # LED Control
 
 The LEDs can be controlled using a numerical sequence consisting of zero to five characters, where each character is either 0 (indicating off) or 1 (indicating on). The position of the number within the sequence determines the specific LED that you want to control. For example, if you want to activate both red LEDs, you would use the sequence 00001. Similarly, to activate both sets of yellow LEDs, you would use the sequence 00110.
 
-I have discovered a straightforward table that effectively controls the LEDs. Although there are additional potential configurations, this table serves as a reliable starting point:
+I have discovered a straightforward table that effectively controls the LEDs. Although there are additional configurations, this table serves as a reliable starting point:
 
 | LED Sequence | LED Configuration    |
 |--------------|----------------------|
