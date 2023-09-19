@@ -7,7 +7,7 @@ const app = express();
 const port = 3000;
 
 // Version information
-const currentVersion = '0.0.2'; 
+const currentVersion = '0.0.3'; 
 console.clear();
 
 function continuePrompt(){
@@ -106,6 +106,11 @@ function main(){
   let shareButton = false
   let optionsButton = false
   let playstationButton = false
+
+  let arrowUp = false
+  let arrowDown = false
+  let arrowRight = false
+  let arrowLeft = false
 
 
   const options = {
@@ -283,53 +288,75 @@ function main(){
         }
       });
 
+      // Arrow Keys
 
-    // Set up route to serve the data
-    app.get('/data', (req, res) => {
-        const forceFeedback = parseFloat(req.query.forceFeedback) || 0; // Default value is 0 if not provided
-        const LEDs = req.query.LEDs || ""; // Default value is an empty string if not provided
-
-        // Convert the forceFeedback value from range 0 to 1 to the desired range -1 to 1
-        const convertedForceFeedback = (forceFeedback + 1) / 2;
-
-        // Apply the force feedback
-        g29.forceConstant(convertedForceFeedback);
-
-        if (LEDs === 0.0){
-          g29.leds("")
+      g29.on('wheel-dpad', function(val) {
+        if (val === 1) {
+          arrowUp = true
+        }else if(val === 3){
+          arrowRight = true
+        }else if(val === 5){
+          arrowDown = true
+        }else if (val === 7){
+          arrowLeft = true
         }else{
-          g29.leds(LEDs)
+          arrowUp = false
+          arrowDown = false
+          arrowLeft = false
+          arrowRight = false
         }
+      })
 
-        const data = {
-            steering,
-            throttle,
-            clutch,
-            brake,
-            gear,
-            shift_left,
-            shift_right,
-            xButton,
-            circleButton,
-            triangleButton,
-            squareButton,
-            l2Button,
-            r2Button,
-            l3Button,
-            r3Button,
-            minusButton,
-            plusButton,
-            wheelSpinner,
-            spinnerButton,
-            shareButton,
-            optionsButton,
-            playstationButton,
-        };
-        res.json(data);
-    });
+// Set up route to serve the data
+app.get('/data', (req, res) => {
+  const forceFeedback = parseFloat(req.query.forceFeedback) || 0; // Default value is 0 if not provided
+  const LEDs = req.query.LEDs || ""; // Default value is an empty string if not provided
 
-    app.listen(port, () => {
-        console.log('\x1b[32m%s\x1b[0m', '■', `Server is running on http://localhost:${port}/data`);
+  // Convert the forceFeedback value from range 0 to 1 to the desired range -1 to 1
+  const convertedForceFeedback = (forceFeedback + 1) / 2;
+
+  // Apply the force feedback
+  g29.forceConstant(convertedForceFeedback);
+  
+  if (LEDs === 0.0){
+    g29.leds("")
+  }else{
+    g29.leds(LEDs)
+  }
+
+  const data = {
+      steering,
+      throttle,
+      clutch,
+      brake,
+      gear,
+      shift_left,
+      shift_right,
+      xButton,
+      circleButton,
+      triangleButton,
+      squareButton,
+      l2Button,
+      r2Button,
+      l3Button,
+      r3Button,
+      minusButton,
+      plusButton,
+      wheelSpinner,
+      spinnerButton,
+      shareButton,
+      optionsButton,
+      playstationButton,
+      arrowUp,
+      arrowDown,
+      arrowLeft,
+      arrowRight,
+  };
+  res.json(data);
+});
+
+  app.listen(port, () => {
+  console.log('\x1b[32m%s\x1b[0m', '■', `Server is running on http://localhost:${port}/data`);
     });
   });
 }
@@ -342,7 +369,11 @@ checkForUpdates()
   })
   .catch(error => {
     // Handle the error
-    console.log('\x1b[41m%s\x1b[0m', 'An error occurred while checking for updates:', error.message);
+    if (error.message.includes("cannot open device with path")){
+      console.log('\x1b[41m%s\x1b[0m', 'We cant connect to the steering wheel for some reason');
+    }else{
+      console.log('\x1b[41m%s\x1b[0m', 'An error occurred:', error.message);
+    }
   });
 
 
