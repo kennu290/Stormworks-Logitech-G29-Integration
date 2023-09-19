@@ -33,8 +33,13 @@ local shareButton = false
 local optionsButton = false
 local playstationButton = false
 
+local arrowUp = false
+local arrowDown = false
+local arrowLeft = false
+local arrowRight = false
+
 local tickCounter = 0  -- Counter to track the ticks
-local sendInterval = 2
+local sendInterval = 3
 
 function onTick()
 	onStatus = input.getBool(1)
@@ -85,6 +90,11 @@ function onTick()
 	output.setBool(20, optionsButton)
 	output.setBool(21, playstationButton)
 
+    output.setBool(22, arrowUp)
+    output.setBool(23, arrowDown)
+    output.setBool(24, arrowRight)
+    output.setBool(25, arrowLeft)
+
 end
 
 function httpReply(port, url, response_body)
@@ -97,68 +107,38 @@ function httpReply(port, url, response_body)
                 throttle = data.throttle
                 clutch = data.clutch
                 brake = data.brake
-				gear = data.gear
-				shift_left = data.shift_left
-				shift_right = data.shift_right
+		gear = data.gear
+		shift_left = data.shift_left
+		shift_right = data.shift_right
 				
-				xButton = data.xButton
-				circleButton = data.circleButton
-				triangleButton = data.triangleButton
-				squareButton = data.squareButton
+		xButton = data.xButton
+		circleButton = data.circleButton
+		triangleButton = data.triangleButton
+		squareButton = data.squareButton
 				
-				l2Button = data.l2Button
-				r2Button = data.r2Button
+		l2Button = data.l2Button
+		r2Button = data.r2Button
 				
-				l3Button = data.l3Button
-				r3Button = data.r3Button
+		l3Button = data.l3Button
+		r3Button = data.r3Button
 				
-				minusButton = data.minusButton
-				plusButton = data.plusButton
+		minusButton = data.minusButton
+		plusButton = data.plusButton
 				
-				wheelSpinner = data.wheelSpinner
-				spinnerButton = data.spinnerButton
+		wheelSpinner = data.wheelSpinner
+		spinnerButton = data.spinnerButton
 				
-				shareButton = data.shareButton
-				optionsButton = data.optionsButton
-				playstationButton = data.playstationButton
+		shareButton = data.shareButton
+		optionsButton = data.optionsButton
+		playstationButton = data.playstationButton
+			
+		arrowUp = data.arrowUp
+		arrowDown = data.arrowDown
+		arrowRight = data.arrowRight
+                arrowLeft = data.arrowLeft
 			end
         end
     end
-end
-
-
-
-function parseJSON(json)
-    local data = {}
-    
-    -- Remove leading/trailing whitespace and newlines
-    json = string.gsub(json, "^%s*(.-)%s*$", "%1")
-    
-    -- Check if the JSON is an object
-    if string.sub(json, 1, 1) == "{" and string.sub(json, -1) == "}" then
-        -- Remove the outer braces
-        json = string.sub(json, 2, -2)
-        
-        -- Split the JSON string by commas
-        local pairs = {}
-        for pair in string.gmatch(json, "%s*([^,]+)") do
-            table.insert(pairs, pair)
-        end
-        
-        -- Process each key-value pair
-        for _, pair in ipairs(pairs) do
-            -- Split the pair into key and value
-            local key, value = string.match(pair, "^%s*\"(.-)\":%s*(.-)%s*$")
-            
-            -- Remove leading/trailing quotes from the key
-            key = string.gsub(key, "^\"(.-)\"$", "%1")
-            
-            -- Add the key-value pair to the data table
-            data[key] = parseJSONValue(value)
-        end
-    end
-    
-    return data
 end
 
 
