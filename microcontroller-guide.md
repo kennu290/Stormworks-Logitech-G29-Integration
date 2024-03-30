@@ -4,7 +4,7 @@ Idk what to put here lmao. Anyway, this is the documentation for the microcontro
 
 # Ingame Setup
 
-Ingame, I suggest you completely unbind all controller binds, as they may conflict with the microcontroller. (EG. You press X but Stormworks thinks you pressed drop item so both actions trigger) This may not be an issue in all cases, but just to be sure, I recommend it. Other than that, you can just put the microcontroller.
+Ingame, I suggest you completely unbind all controller binds, as they may conflict with the microcontroller. (EG. You press X but Stormworks thinks you pressed drop item so both actions trigger) This may not be an issue in all cases.
 
 # Composite button Mapping
 
