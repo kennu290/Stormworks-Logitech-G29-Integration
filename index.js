@@ -4,10 +4,10 @@ const g29 = require('logitech-g29');
 const readlineSync = require('readline-sync');
 
 const app = express();
-const port = 3000;
+let port = 3000;
 
 // Version information
-const currentVersion = '0.0.3'; 
+const currentVersion = '0.0.4'; 
 console.clear();
 
 function continuePrompt(){
@@ -24,6 +24,30 @@ function continuePrompt(){
   } else {
     console.log('Invalid input. Please enter either "y" or "n".');
     continuePrompt()
+  }
+}
+
+function continuePortPrompt(){
+  // Prompt for user input synchronously
+  const input = readlineSync.question('Do you want a custom port? (no unless you know what you are doing) (y/n)').toLowerCase();
+
+  // Handle the user input
+  if (input === 'y') {
+    console.clear()
+    const Wantedport = parseFloat(readlineSync.question('Enter your desired port number: ').toLowerCase());
+    if (!isNaN(Wantedport)){
+      port = Wantedport;
+      console.log(`Using port ${port}...`);
+      console.clear();
+      return
+    }
+    throw new Error('Invalid port number')
+  } else if (input === 'n') {
+    console.clear()
+    return
+  } else {
+    console.log('Invalid input. Please enter either "y" or "n".');
+    continuePortPrompt()
   }
 }
 
@@ -57,6 +81,12 @@ async function performStartupAnimation() {
     "11000",
     "11100",
     "11110",
+    "11111",
+    "00000",
+    "00000",
+    "11111",
+    "00000",
+    "11111",
     "11111"
   ];
 
@@ -364,6 +394,7 @@ app.get('/data', (req, res) => {
 // Check for updates on program startup
 checkForUpdates()
   .then(() => {
+    continuePortPrompt()
     // Start the server
     main()
   })
