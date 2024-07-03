@@ -1,5 +1,7 @@
 # Logitech G29 Integration with Stormworks
 
+[![Hits](https://hits.seeyoufarm.com/api/count/incr/badge.svg?url=https%3A%2F%2Fgithub.com%2Fkennu290%2FStormworks-Logitech-G29-Integration%2F&count_bg=%2379C83D&title_bg=%23555555&icon=github.svg&icon_color=%23E7E7E7&title=Page+visits&edge_flat=false)](https://hits.seeyoufarm.com)
+
 This project enables the integration of the Logitech G29 steering wheel with Stormworks, providing enhanced features such as force feedback, button mapping, LED control.
 ## Requirements
 
